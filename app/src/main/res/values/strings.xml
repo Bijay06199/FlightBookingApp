@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">BookingTickets</string>
+    <string name="_12_feb_2020">12 Feb, 2020</string>
+    <string name="one_way">One way</string>
+    <string name="search_flights">Search Flights</string>
+    <string name="to_visit_new_delhi_india">to visit New Delhi India</string>
+    <string name="_8_00pm">8:00pm</string>
+    <string name="_283">$283</string>
+    <string name="bkn7">BKN7</string>
+    <string name="_2_15_pm">2:15 pm</string>
+    <string name="_447">$447</string>
+    <string name="business_class">Business class</string>
+    <string name="slm">SLM</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="_2_adults">2 Adults</string>
+    <string name="flight_no">Flight No.</string>
+    <string name="_class">Class</string>
+    <string name="gate">Gate</string>
+    <string name="_66b">66B</string>
+    <string name="seat">Seat</string>
+</resources>
