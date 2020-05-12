@@ -435,6 +435,7 @@
                 app:cardBackgroundColor="#000"
                 app:cardCornerRadius="5dp"
                 app:cardElevation="10dp"
+                android:foreground="?attr/selectableItemBackground"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/cv_adults">
