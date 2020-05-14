@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.bookingtickets">
 
     <application
@@ -8,13 +9,18 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:name=".BookingTicket"
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
 
-        <activity android:name=".FlightActivity"
+        <activity android:name=".ui.flight.FlightActivity"
+            android:theme="@style/MainTheme"
             android:launchMode="singleTask"/>
-        <activity android:name=".TicketActivity"
+        <activity android:name=".ui.ticket.TicketActivity"
+            android:theme="@style/TicketTheme"
             android:launchMode="singleTask"/>
-        <activity android:name=".MainActivity"
+        <activity android:name=".ui.main.MainActivity"
+            android:theme="@style/MainTheme"
             android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

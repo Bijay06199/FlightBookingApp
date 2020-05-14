@@ -1,12 +1,10 @@
 <resources>
     <string name="app_name">BookingTickets</string>
-    <string name="_12_feb_2020">12 Feb, 2020</string>
     <string name="one_way">One way</string>
     <string name="search_flights">Search Flights</string>
     <string name="to_visit_new_delhi_india">to visit New Delhi India</string>
     <string name="_8_00pm">8:00pm</string>
     <string name="_283">$283</string>
-    <string name="bkn7">BKN7</string>
     <string name="_2_15_pm">2:15 pm</string>
     <string name="_447">$447</string>
     <string name="business_class">Business class</string>
@@ -33,4 +31,24 @@
     <string name="gate">Gate</string>
     <string name="_66b">66B</string>
     <string name="seat">Seat</string>
+    <string name="amsterdam_netherlands">Amsterdam, Netherlands</string>
+    <string name="new_delhi_india">New Delhi, India</string>
+    <string name="_12_feb_2020">12 Feb, 2020</string>
+    <string name="round_trip">Round Trip</string>
+    <string name="multi_city">Multi City</string>
+    <string name="from">From</string>
+    <string name="to">To</string>
+    <string name="see_cheapest_flights">See Cheapest Flights</string>
+    <string name="measure_your_baggage">Measure your baggage</string>
+    <string name="select_flight">Select Flight</string>
+    <string name="e_ticket">E-Ticket</string>
+    <string name="more">more</string>
+    <string name="_4_flight_tickets">4 Flight Tickets</string>
+    <string name="bkn7">BKN7</string>
+    <string name="business">Business</string>
+    <string name="_21_b">21 B</string>
+    <string name="share_with_friend_and_family">Share with friend and family</string>
+    <string name="date">Date</string>
+    <string name="passengers">Passengers</string>
+    <string name="btl">BTL</string>
 </resources>

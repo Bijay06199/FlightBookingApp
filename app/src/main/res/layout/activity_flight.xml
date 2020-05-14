@@ -1,776 +1,156 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.bookingtickets.ui.flight.FlightViewModel" />
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".FlightActivity">
-
-    <ImageView
-        android:id="@+id/iv_back_flight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/back" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Select Flight"
-        android:textSize="20sp"
-        android:textColor="#000"
-        app:layout_constraintBottom_toBottomOf="@+id/iv_back_flight"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/iv_back_flight"
-        app:layout_constraintTop_toTopOf="@+id/iv_back_flight" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Your Trip"
-        app:layout_constraintStart_toStartOf="@+id/iv_back_flight"
-        app:layout_constraintTop_toBottomOf="@+id/iv_back_flight" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="AMS - DEL"
-        android:textSize="26sp"
-        android:textStyle="bold"
-        android:textColor="#000"
-        app:layout_constraintStart_toStartOf="@+id/textView8"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
-
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="@string/_12_feb_2020"
-        app:layout_constraintStart_toStartOf="@+id/textView9"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView3"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        app:cardBackgroundColor="#CAD1DE"
-        app:cardCornerRadius="15dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView9"
-        app:layout_constraintStart_toEndOf="@id/textView9"
-        app:layout_constraintTop_toTopOf="@+id/textView9">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="3dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:text="@string/one_way"
-                android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+    android:layout_height="match_parent">
 
 
-    </androidx.cardview.widget.CardView>
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/cardView3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.9"
-        app:layout_constraintStart_toEndOf="@+id/cardView3"
-        app:layout_constraintTop_toTopOf="@+id/cardView3"
-        app:srcCompat="@drawable/settings" />
-
-    <ScrollView
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="170dp"
-
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="20dp">
+            app:elevation="0dp"
+            android:layout_height="wrap_content">
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_spice_jet"
+            <com.google.android.material.appbar.MaterialToolbar
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="8dp"
-                app:cardUseCompatPadding="true"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:navigationIcon="@drawable/back"
+                android:background="@color/white"
+                android:id="@+id/topAppBar"
+                style="@style/ThemeOverlay.MaterialComponents.Toolbar.Primary"
+                app:layout_scrollFlags="scroll|enterAlways"
+                android:layout_height="?attr/actionBarSize">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+
+                <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="20dp">
+                    android:text="@string/select_flight"
+                    android:textColor="@color/black"
+                    android:layout_marginEnd="80dp"
+                    android:textSize="20sp"
+                    android:gravity="center"
+                    style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+                    android:layout_height="wrap_content"/>
+            </com.google.android.material.appbar.MaterialToolbar>
 
-                    <ImageView
-                        android:id="@+id/imageView5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/spicejet"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/textView12"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/_283"
-                        android:textColor="#7ED321"
-                        android:textSize="15sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/imageView5"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/imageView5" />
-
-                    <TextView
-                        android:id="@+id/textView13"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:text="@string/_8_00pm"
-                        android:textColor="@color/black"
-                        android:textSize="17sp"
-                        app:layout_constraintStart_toStartOf="@+id/imageView5"
-                        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
-
-                    <Button
-                        android:id="@+id/button"
-                        android:layout_width="0dp"
-                        android:layout_height="2dp"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginEnd="10dp"
-                        android:background="@drawable/dotted_line"
-                        app:layout_constraintBottom_toBottomOf="@+id/textView16"
-                        app:layout_constraintEnd_toStartOf="@+id/textView16"
-                        app:layout_constraintStart_toEndOf="@+id/textView13"
-                        app:layout_constraintTop_toTopOf="@+id/textView16" />
-
-                    <TextView
-                        android:id="@+id/textView14"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/bkn7"
-                        android:textColor="@color/black"
-                        android:textSize="15sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/textView16"
-                        app:layout_constraintEnd_toEndOf="@+id/textView12"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="@+id/textView15"
-                        app:layout_constraintTop_toTopOf="@+id/textView16" />
-
-                    <TextView
-                        android:id="@+id/textView15"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Flight No."
-                        android:textSize="13sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/textView18"
-                        app:layout_constraintEnd_toEndOf="@+id/textView12"
-                        app:layout_constraintTop_toTopOf="@+id/textView18" />
-
-                    <TextView
-                        android:id="@+id/textView16"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="40dp"
-                        android:text="@string/_2_15_pm"
-                        android:textColor="@color/black"
-                        android:textSize="17sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/textView13"
-                        app:layout_constraintEnd_toStartOf="@+id/textView14"
-                        app:layout_constraintTop_toTopOf="@+id/textView13" />
-
-                    <ImageView
-                        android:id="@+id/imageView6"
-                        android:layout_width="17dp"
-                        android:layout_height="7dp"
-                        android:layout_marginBottom="10dp"
-                        app:layout_constraintBottom_toTopOf="@+id/button"
-                        app:layout_constraintEnd_toEndOf="@+id/button"
-                        app:layout_constraintStart_toStartOf="@+id/button"
-                        app:srcCompat="@drawable/aplane" />
-
-                    <TextView
-                        android:id="@+id/textView17"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:text="AMS, Mon"
-                        android:textSize="13sp"
-                        app:layout_constraintEnd_toEndOf="@+id/textView13"
-                        app:layout_constraintStart_toStartOf="@+id/textView13"
-                        app:layout_constraintTop_toBottomOf="@+id/textView13" />
-
-                    <TextView
-                        android:id="@+id/textView18"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:text="DEL, Tue"
-                        android:textSize="13sp"
-                        app:layout_constraintStart_toStartOf="@+id/textView16"
-                        app:layout_constraintTop_toBottomOf="@+id/textView16" />
-
-                    <TextView
-                        android:id="@+id/textView19"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:text="Duration:"
-                        android:textSize="12sp"
-                        app:layout_constraintStart_toStartOf="@+id/textView17"
-                        app:layout_constraintTop_toBottomOf="@+id/textView17" />
-
-                    <TextView
-                        android:id="@+id/textView20"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:text="17h 15 m"
-                        android:textColor="@color/black"
-                        android:textSize="12sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/textView19"
-                        app:layout_constraintStart_toEndOf="@+id/textView19"
-                        app:layout_constraintTop_toTopOf="@+id/textView19" />
-
-                    <TextView
-                        android:id="@+id/textView21"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:text="| Non - Stop"
-                        android:textSize="12sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/textView20"
-                        app:layout_constraintStart_toEndOf="@+id/textView20"
-                        app:layout_constraintTop_toTopOf="@+id/textView20" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_indigo"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                app:cardCornerRadius="8dp"
-                app:cardUseCompatPadding="true"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cv_spice_jet">
+                android:background="@color/white"
+                android:padding="20dp"
+                app:layout_scrollFlags="noScroll"
+                android:layout_height="wrap_content">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="20dp">
+                    android:text="Your Trip"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                    <ImageView
-                        android:id="@+id/imageView5_indigo"
+                <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="AMS - DEL"
+                    android:textSize="26sp"
+                    android:textStyle="bold"
+                    android:textColor="#000"
+                    app:layout_constraintStart_toStartOf="@+id/textView8"
+                    app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/_12_feb_2020"
+                    app:layout_constraintStart_toStartOf="@+id/textView9"
+                    app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    app:cardBackgroundColor="#CAD1DE"
+                    app:cardCornerRadius="15dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView9"
+                    app:layout_constraintStart_toEndOf="@id/textView9"
+                    app:layout_constraintTop_toTopOf="@+id/textView9">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/indigo"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        android:padding="3dp">
 
-                    <TextView
-                        android:id="@+id/tv_indigo_price"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/_447"
-                        android:textColor="#F9A818"
-                        android:textSize="15sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/imageView5_indigo"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/imageView5_indigo" />
-
-                    <TextView
-                        android:id="@+id/tv_indigo_time"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:text="@string/_8_00pm"
-                        android:textColor="@color/black"
-                        android:textSize="17sp"
-                        app:layout_constraintStart_toStartOf="@+id/imageView5_indigo"
-                        app:layout_constraintTop_toBottomOf="@+id/imageView5_indigo" />
-
-                    <Button
-                        android:id="@+id/indigo_dot"
-                        android:layout_width="0dp"
-                        android:layout_height="2dp"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginEnd="10dp"
-                        android:background="@drawable/dotted_line"
-                        app:layout_constraintBottom_toBottomOf="@+id/tv_time"
-                        app:layout_constraintEnd_toStartOf="@+id/tv_time"
-                        app:layout_constraintStart_toEndOf="@+id/tv_indigo_time"
-                        app:layout_constraintTop_toTopOf="@+id/tv_time" />
-
-                    <TextView
-                        android:id="@+id/tv_bkn7"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/bkn7"
-                        android:textColor="@color/black"
-                        android:textSize="15sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/tv_del_tue"
-                        app:layout_constraintEnd_toEndOf="@+id/tv_indigo_price"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="@+id/tv_flight_no"
-                        app:layout_constraintTop_toTopOf="@+id/tv_del_tue" />
-
-                    <TextView
-                        android:id="@+id/tv_flight_no"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="3dp"
-                        android:text="Flight No."
-                        android:textSize="13sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/tv_time"
-                        app:layout_constraintEnd_toEndOf="@+id/tv_indigo_price"
-                        app:layout_constraintTop_toTopOf="@+id/tv_time" />
-
-                    <TextView
-                        android:id="@+id/tv_time"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="40dp"
-                        android:text="@string/_2_15_pm"
-                        android:textColor="@color/black"
-                        android:textSize="17sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/tv_indigo_time"
-                        app:layout_constraintEnd_toStartOf="@+id/tv_flight_no"
-                        app:layout_constraintTop_toTopOf="@+id/tv_indigo_time" />
-
-                    <ImageView
-                        android:id="@+id/iv_plane"
-                        android:layout_width="17dp"
-                        android:layout_height="7dp"
-                        android:layout_marginBottom="10dp"
-                        app:layout_constraintBottom_toTopOf="@+id/indigo_dot"
-                        app:layout_constraintEnd_toEndOf="@+id/indigo_dot"
-                        app:layout_constraintStart_toStartOf="@+id/indigo_dot"
-                        app:srcCompat="@drawable/aplane" />
-
-                    <TextView
-                        android:id="@+id/tv_ams"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:text="AMS, Mon"
-                        android:textSize="13sp"
-                        app:layout_constraintEnd_toEndOf="@+id/tv_indigo_time"
-                        app:layout_constraintStart_toStartOf="@+id/tv_indigo_time"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_indigo_time" />
-
-                    <TextView
-                        android:id="@+id/tv_del_tue"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:text="DEL, Tue"
-                        android:textSize="13sp"
-                        app:layout_constraintStart_toStartOf="@+id/tv_time"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_time" />
-
-                    <TextView
-                        android:id="@+id/tv_duration"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:text="Duration:"
-                        android:textSize="12sp"
-                        app:layout_constraintStart_toStartOf="@+id/tv_ams"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_ams" />
-
-                    <TextView
-                        android:id="@+id/tv_hr_min"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:text="17h 15 m"
-                        android:textColor="@color/black"
-                        android:textSize="12sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/tv_duration"
-                        app:layout_constraintStart_toEndOf="@+id/tv_duration"
-                        app:layout_constraintTop_toTopOf="@+id/tv_duration" />
-
-                    <TextView
-                        android:id="@+id/tv_non_stop"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:text="| Non - Stop"
-                        android:textSize="12sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/tv_hr_min"
-                        app:layout_constraintStart_toEndOf="@+id/tv_hr_min"
-                        app:layout_constraintTop_toTopOf="@+id/tv_hr_min" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:text="@string/one_way"
+                            android:textColor="@color/white"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-            </androidx.cardview.widget.CardView>
+                </androidx.cardview.widget.CardView>
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/cardView3"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.9"
+                    app:layout_constraintStart_toEndOf="@+id/cardView3"
+                    app:layout_constraintTop_toTopOf="@+id/cardView3"
+                    app:srcCompat="@drawable/settings" />
 
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_qatar"
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_flight"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                app:cardCornerRadius="8dp"
-                app:cardUseCompatPadding="true"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cv_indigo">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="20dp">
-
-                    <ImageView
-                        android:id="@+id/imageView5_qatar"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/qatar"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/tv_qatar_price"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="$591"
-                        android:textColor="#D50000"
-                        android:textSize="15sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/imageView5_qatar"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/imageView5_qatar" />
-
-                    <TextView
-                        android:id="@+id/tv_qatar_time"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:text="@string/_8_00pm"
-                        android:textColor="@color/black"
-                        android:textSize="17sp"
-                        app:layout_constraintStart_toStartOf="@+id/imageView5_qatar"
-                        app:layout_constraintTop_toBottomOf="@+id/imageView5_qatar" />
-
-                    <Button
-                        android:id="@+id/qatar_dot"
-                        android:layout_width="0dp"
-                        android:layout_height="2dp"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginEnd="10dp"
-                        android:background="@drawable/dotted_line"
-                        app:layout_constraintBottom_toBottomOf="@+id/tv_time_qatar"
-                        app:layout_constraintEnd_toStartOf="@+id/tv_time_qatar"
-                        app:layout_constraintStart_toEndOf="@+id/tv_qatar_time"
-                        app:layout_constraintTop_toTopOf="@+id/tv_time_qatar" />
-
-                    <TextView
-                        android:id="@+id/tv_bkn7_qatar"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/bkn7"
-                        android:textColor="@color/black"
-                        android:textSize="15sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/tv_del_tue_qatar"
-                        app:layout_constraintEnd_toEndOf="@+id/tv_qatar_price"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="@+id/tv_flight_no_qatar"
-                        app:layout_constraintTop_toTopOf="@+id/tv_del_tue_qatar" />
-
-                    <TextView
-                        android:id="@+id/tv_flight_no_qatar"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="3dp"
-                        android:text="Flight No."
-                        android:textSize="13sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/tv_time_qatar"
-                        app:layout_constraintEnd_toEndOf="@+id/tv_qatar_price"
-                        app:layout_constraintTop_toTopOf="@+id/tv_time_qatar" />
-
-                    <TextView
-                        android:id="@+id/tv_time_qatar"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="40dp"
-                        android:text="@string/_2_15_pm"
-                        android:textColor="@color/black"
-                        android:textSize="17sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/tv_qatar_time"
-                        app:layout_constraintEnd_toStartOf="@+id/tv_flight_no_qatar"
-                        app:layout_constraintTop_toTopOf="@+id/tv_qatar_time" />
-
-                    <ImageView
-                        android:id="@+id/iv_plane_qatar"
-                        android:layout_width="17dp"
-                        android:layout_height="7dp"
-                        android:layout_marginBottom="10dp"
-                        app:layout_constraintBottom_toTopOf="@+id/qatar_dot"
-                        app:layout_constraintEnd_toEndOf="@+id/qatar_dot"
-                        app:layout_constraintStart_toStartOf="@+id/qatar_dot"
-                        app:srcCompat="@drawable/aplane" />
-
-                    <TextView
-                        android:id="@+id/tv_ams_qatar"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:text="AMS, Mon"
-                        android:textSize="13sp"
-                        app:layout_constraintEnd_toEndOf="@+id/tv_qatar_time"
-                        app:layout_constraintStart_toStartOf="@+id/tv_qatar_time"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_qatar_time" />
-
-                    <TextView
-                        android:id="@+id/tv_del_tue_qatar"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:text="DEL, Tue"
-                        android:textSize="13sp"
-                        app:layout_constraintStart_toStartOf="@+id/tv_time_qatar"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_time_qatar" />
-
-                    <TextView
-                        android:id="@+id/tv_duration_qatar"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:text="Duration:"
-                        android:textSize="12sp"
-                        app:layout_constraintStart_toStartOf="@+id/tv_ams_qatar"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_ams_qatar" />
-
-                    <TextView
-                        android:id="@+id/tv_hr_min_qatar"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:text="17h 15 m"
-                        android:textColor="@color/black"
-                        android:textSize="12sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/tv_duration_qatar"
-                        app:layout_constraintStart_toEndOf="@+id/tv_duration_qatar"
-                        app:layout_constraintTop_toTopOf="@+id/tv_duration_qatar" />
-
-                    <TextView
-                        android:id="@+id/tv_non_stop_qatar"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:text="| Non - Stop"
-                        android:textSize="12sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/tv_hr_min_qatar"
-                        app:layout_constraintStart_toEndOf="@+id/tv_hr_min_qatar"
-                        app:layout_constraintTop_toTopOf="@+id/tv_hr_min_qatar" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                 />
 
 
-            </androidx.cardview.widget.CardView>
 
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_vista"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                app:cardCornerRadius="8dp"
-                app:cardUseCompatPadding="true"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cv_qatar">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="20dp">
-
-                    <ImageView
-                        android:id="@+id/imageView5_vista"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/vista"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/tv_vista_price"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="$283"
-                        android:textColor="#7ED321"
-                        android:textSize="15sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/imageView5_vista"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/imageView5_vista" />
-
-                    <TextView
-                        android:id="@+id/tv_vista_time"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:text="@string/_8_00pm"
-                        android:textColor="@color/black"
-                        android:textSize="17sp"
-                        app:layout_constraintStart_toStartOf="@+id/imageView5_vista"
-                        app:layout_constraintTop_toBottomOf="@+id/imageView5_vista" />
-
-                    <Button
-                        android:id="@+id/vista_dot"
-                        android:layout_width="0dp"
-                        android:layout_height="2dp"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginEnd="10dp"
-                        android:background="@drawable/dotted_line"
-                        app:layout_constraintBottom_toBottomOf="@+id/tv_time_vista"
-                        app:layout_constraintEnd_toStartOf="@+id/tv_time_vista"
-                        app:layout_constraintStart_toEndOf="@+id/tv_vista_time"
-                        app:layout_constraintTop_toTopOf="@+id/tv_time_vista" />
-
-                    <TextView
-                        android:id="@+id/tv_bkn7_vista"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/bkn7"
-                        android:textColor="@color/black"
-                        android:textSize="15sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/tv_del_tue_vista"
-                        app:layout_constraintEnd_toEndOf="@+id/tv_vista_price"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="@+id/tv_flight_no_vista"
-                        app:layout_constraintTop_toTopOf="@+id/tv_del_tue_vista" />
-
-                    <TextView
-                        android:id="@+id/tv_flight_no_vista"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="3dp"
-                        android:text="Flight No."
-                        android:textSize="13sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/tv_time_vista"
-                        app:layout_constraintEnd_toEndOf="@+id/tv_vista_price"
-                        app:layout_constraintTop_toTopOf="@+id/tv_time_vista" />
-
-                    <TextView
-                        android:id="@+id/tv_time_vista"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="40dp"
-                        android:text="@string/_2_15_pm"
-                        android:textColor="@color/black"
-                        android:textSize="17sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/tv_vista_time"
-                        app:layout_constraintEnd_toStartOf="@+id/tv_flight_no_vista"
-                        app:layout_constraintTop_toTopOf="@+id/tv_vista_time" />
-
-                    <ImageView
-                        android:id="@+id/iv_plane_vista"
-                        android:layout_width="17dp"
-                        android:layout_height="7dp"
-                        android:layout_marginBottom="10dp"
-                        app:layout_constraintBottom_toTopOf="@+id/vista_dot"
-                        app:layout_constraintEnd_toEndOf="@+id/vista_dot"
-                        app:layout_constraintStart_toStartOf="@+id/vista_dot"
-                        app:srcCompat="@drawable/aplane" />
-
-                    <TextView
-                        android:id="@+id/tv_ams_vista"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:text="AMS, Mon"
-                        android:textSize="13sp"
-                        app:layout_constraintEnd_toEndOf="@+id/tv_vista_time"
-                        app:layout_constraintStart_toStartOf="@+id/tv_vista_time"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_vista_time" />
-
-                    <TextView
-                        android:id="@+id/tv_del_tue_vista"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:text="DEL, Tue"
-                        android:textSize="13sp"
-                        app:layout_constraintStart_toStartOf="@+id/tv_time_vista"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_time_vista" />
-
-                    <TextView
-                        android:id="@+id/tv_duration_vista"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:text="Duration:"
-                        android:textSize="12sp"
-                        app:layout_constraintStart_toStartOf="@+id/tv_ams_vista"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_ams_vista" />
-
-                    <TextView
-                        android:id="@+id/tv_hr_min_vista"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:text="17h 15 m"
-                        android:textColor="@color/black"
-                        android:textSize="12sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/tv_duration_vista"
-                        app:layout_constraintStart_toEndOf="@+id/tv_duration_vista"
-                        app:layout_constraintTop_toTopOf="@+id/tv_duration_vista" />
-
-                    <TextView
-                        android:id="@+id/tv_non_stop_vista"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:text="| Non - Stop"
-                        android:textSize="12sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/tv_hr_min_vista"
-                        app:layout_constraintStart_toEndOf="@+id/tv_hr_min_vista"
-                        app:layout_constraintTop_toTopOf="@+id/tv_hr_min_vista" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-            </androidx.cardview.widget.CardView>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    </ScrollView>
-
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>
